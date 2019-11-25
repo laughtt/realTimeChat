@@ -4,6 +4,7 @@ import './App.css';
 // App.js
 import React, { Component } from "react";
 import { connect, sendMsg } from "./api/index";
+import Header from './components/Header/Header';
 
 class App extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Header />
         <button onClick={this.send}>Hit</button>
       </div>
     );

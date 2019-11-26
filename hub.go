@@ -1,5 +1,7 @@
 package main
 
+import "log"
+
 type Hub struct {
 	clients    map[*Client]bool
 	broadcast  chan []byte
@@ -30,6 +32,7 @@ func (h *Hub) run() {
 			for client := range h.clients {
 				select {
 				case client.send <- message:
+					log.Println(message)
 				default:
 					close(client.send)
 					delete(h.clients, client)

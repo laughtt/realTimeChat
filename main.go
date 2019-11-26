@@ -27,9 +27,9 @@ func main() {
 	go hub.run()
 	http.HandleFunc("/", serverHome)
 	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
-		serverWs(hub, w, r)
+		serveWs(hub, w, r)
 	})
-	err := http.ListenAndServer(*addr, nil)
+	err := http.ListenAndServe(*addr, nil)
 	if err != nil {
 		log.Fatal("ListenAndServe :", err)
 	}
